@@ -9,9 +9,27 @@ app.secret_key = "SECRETSECRETSECRET"
 
 
 def is_mel(name, email):
-    """Is this user Mel?"""
+    """Is this user Mel?
 
-    return name == "Mel Melitpolski" or email == "mel@ubermelon.com"
+    >>> is_mel("Mel Melitpolski", "test@cat.com")
+    True
+
+    >>> is_mel("mel melitpolski", "bogus@dog.com")
+    True
+
+    >>> is_mel("roo", "mel@ubermelon.com")
+    True
+
+    >>> is_mel("Mel Melitpolski", "mel@ubermelon.com")
+    True
+    
+    >>> is_mel("Roo", "no")
+    False
+
+    """
+
+    return (name.lower() == "mel melitpolski" or 
+            email == "mel@ubermelon.com")
 
 
 def most_and_least_common_type(treats):
