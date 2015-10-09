@@ -2,7 +2,7 @@
 
 
 from flask import Flask, session, render_template, request, flash, redirect
-from flask_debugtoolbar import DebugToolbarExtension
+# from flask_debugtoolbar import DebugToolbarExtension
 
 app = Flask(__name__)
 app.secret_key = "SECRETSECRETSECRET"
@@ -22,7 +22,7 @@ def is_mel(name, email):
 
     >>> is_mel("Mel Melitpolski", "mel@ubermelon.com")
     True
-    
+
     >>> is_mel("Roo", "no")
     False
 
@@ -33,13 +33,25 @@ def is_mel(name, email):
 
 
 def most_and_least_common_type(treats):
-    """Given list of treats, return {most, least} common types."""
+    """Given list of treats (dictionary), return {most, least} common types.
+
+        Given a list of dictionaries with a key = 'type'
+
+            >>> test_list = [{"type":"A"}, {"type":"A"}, {"type":"A"}, 
+            ... {"type":"B"}, {"type":"B"}, {"type":"C"}]
+
+        Count up the most-used and least-used values of the key 'type'
+
+            >>> most_and_least_common_type(test_list)
+            ('A', 'C')
+    """
 
     types = {}
 
     # Count number of each type
     for treat in treats:
-        types[treat['type']] = types.get(treat['type'], 0) + 1
+        treat_type = treat['type']
+        types[treat_type] = types.get(treat_type, 0) + 1
 
     most_count = most_type = None
     least_count = least_type = None
@@ -131,5 +143,5 @@ def rsvp():
 if __name__ == "__main__":
     app.debug = True
     app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
-    DebugToolbarExtension(app)
+    # DebugToolbarExtension(app)
     app.run()
