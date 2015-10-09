@@ -44,6 +44,20 @@ def most_and_least_common_type(treats):
 
             >>> most_and_least_common_type(test_list)
             ('A', 'C')
+
+        #DOCUMENTATION OF THE TESTS BELOW NEEDED
+            >>> most_and_least_common_type([{"type": "A"}])
+            ('A', 'A')
+            >>> most_and_least_common_type([{"type": "A"}, {"type": "A"}])
+            ('A', 'A')
+            >>> most_and_least_common_type([])
+            (None, None)
+            >>> most_and_least_common_type([{"type": "A"}, {"type": "B"}])
+            ('A', 'A')
+            >>> most_and_least_common_type([{"type": "A"}, {"type": "B"}, {"type": "B"}, {"t
+            ype": "A"}])
+            ('A', 'A')
+
     """
 
     types = {}
